@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-TARGET_KERNEL_CUSTOM_TOOLCHAIN := sm-arm-eabi-4.8/bin/arm-eabi-
+#TARGET_KERNEL_CUSTOM_TOOLCHAIN := sm-arm-eabi-4.8/bin/arm-eabi-
 
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
