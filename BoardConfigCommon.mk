@@ -48,8 +48,8 @@ TARGET_GCC_VERSION_EXP := 4.8
 TARGET_USE_O3 := true
 
 # Flags
-TARGET_GLOBAL_CFLAGS += -O2 -mcpu=cortex-a15 -march=armv7-a -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
-TARGET_GLOBAL_CPPFLAGS += -O2 -mcpu=cortex-a15 -march=armv7-a -mtune=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CFLAGS += -O2 -mcpu=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -O2 -mcpu=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 # Krait optimizations
