@@ -14,6 +14,12 @@
 
 #TARGET_KERNEL_CUSTOM_TOOLCHAIN := sm-arm-eabi-4.8/bin/arm-eabi-
 
+COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
+BOARD_USES_QCOM_HARDWARE := true
+TARGET_QCOM_DISPLAY_VARIANT := caf
+TARGET_QCOM_AUDIO_VARIANT := caf
+TARGET_QCOM_MEDIA_VARIANT := caf
+
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
@@ -88,80 +94,3 @@ MAX_EGL_CACHE_KEY_SIZE := 12*1024
 # of the device.
 MAX_EGL_CACHE_SIZE := 2048*1024
 
-NUM_FRAMEBUFFER_SURFACE_BUFFERS := 3
-OVERRIDE_RS_DRIVER := libRSDriver_adreno.so
-
-BOARD_SEPOLICY_DIRS += \
-    device/sony/rhine-common/sepolicy
-
-# The list below is order dependent
-BOARD_SEPOLICY_UNION := \
-    device.te \
-    app.te \
-    file_contexts
-
-# Audio
-BOARD_USES_ALSA_AUDIO := true
-AUDIO_FEATURE_DISABLED_USBAUDIO := true
-AUDIO_FEATURE_DEEP_BUFFER_PRIMARY := true
-AUDIO_FEATURE_DYNAMIC_VOLUME_MIXER := true
-
-# Camera
-USE_DEVICE_SPECIFIC_CAMERA := true
-BOARD_CAMERA_HAVE_ISO := true
-
-# GPS
-TARGET_PROVIDES_GPS_LOC_API := true
-
-# Bluetooth
-BOARD_HAVE_BLUETOOTH := true
-BOARD_HAVE_BLUETOOTH_QCOM := true
-BLUETOOTH_HCI_USE_MCT := true
-
-# Time
-BOARD_USES_QC_TIME_SERVICES := true
-
-# Pre KK blob compat
-COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
-
-BOARD_CHARGER_ENABLE_SUSPEND := true
-
-BOARD_HARDWARE_CLASS := device/sony/rhine-common/cmhw
-
-# Custom boot
-TARGET_RECOVERY_PIXEL_FORMAT := "RGBX_8888"
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_23x41.h\"
-
-TARGET_RECOVERY_FSTAB := device/sony/rhine-common/rootdir/fstab.qcom
-
-BOARD_FLASH_BLOCK_SIZE := 131072
-BOARD_HAS_NO_SELECT_BUTTON := true
-TARGET_USERIMAGES_USE_EXT4 := true
-
-# TWRP flags
-DEVICE_RESOLUTION := 1080x1920
-RECOVERY_GRAPHICS_USE_LINELENGTH := true
-RECOVERY_SDCARD_ON_DATA := true
-TW_HAS_NO_RECOVERY_PARTITION := true
-TW_FLASH_FROM_STORAGE := true
-TW_EXTERNAL_STORAGE_PATH := "/external_sd"
-TW_EXTERNAL_STORAGE_MOUNT_POINT := "external_sd"
-TW_DEFAULT_EXTERNAL_STORAGE := true
-# TW_INCLUDE_CRYPTO := true
-TW_INCLUDE_JB_CRYPTO := true
-TW_CRYPTO_FS_TYPE := "ext4"
-TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/msm_sdcc.1/by-name/userdata"
-TW_CRYPTO_MNT_POINT := "/data"
-TW_CRYPTO_FS_OPTIONS := "nosuid,nodev,barrier=1,noauto_da_alloc,discard"
-TW_CRYPTO_FS_FLAGS := "0x00000406"
-TW_CRYPTO_KEY_LOC := "footer"
-TW_INCLUDE_FUSE_EXFAT := true
-TW_BOARD_CUSTOM_GRAPHICS := ../../../device/sony/rhine-common/recovery/twrpgraphics.c
-TW_BRIGHTNESS_PATH := /sys/class/leds/wled:backlight/brightness
-TW_MAX_BRIGHTNESS := 4095
-TW_NO_USB_STORAGE := true
-
-TARGET_RELEASETOOLS_EXTENSIONS := device/sony/rhine-common
-
-# Vendor Init
-TARGET_INIT_VENDOR_LIB := libinit_rhine
