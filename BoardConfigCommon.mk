@@ -12,6 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+TARGET_KERNEL_CUSTOM_TOOLCHAIN := sm-arm-eabi-4.8/bin/arm-eabi-
+
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
 
@@ -33,10 +35,21 @@ BOARD_VENDOR_PLATFORM := rhine
 BOARD_LIB_DUMPSTATE := libdumpstate.sony
 
 # Architecture
-TARGET_ARCH_VARIANT_CPU := cortex-a9
+TARGET_CPU_ABI := armeabi-v7a
+TARGET_CPU_ABI2 := armeabi
+TARGET_ARCH := arm
+TARGET_CPU_SMP := true
+TARGET_ARCH_VARIANT := armv7-a-neon
+TARGET_ARCH_VARIANT_CPU := cortex-a15
 TARGET_CPU_VARIANT := krait
 
+
+TARGET_GCC_VERSION_EXP := 4.8
+TARGET_USE_O3 := true
+
 # Flags
+TARGET_GLOBAL_CFLAGS += -O2 -mcpu=cortex-a15 -march=armv7-a -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
+TARGET_GLOBAL_CPPFLAGS += -O2 -mcpu=cortex-a15 -march=armv7-a -mtune=cortex-a15 -mtune=cortex-a15 -mfpu=neon-vfpv4 -mfloat-abi=softfp
 COMMON_GLOBAL_CFLAGS += -D__ARM_USE_PLD -D__ARM_CACHE_LINE_SIZE=64
 
 # Krait optimizations
