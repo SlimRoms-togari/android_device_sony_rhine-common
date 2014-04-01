@@ -18,7 +18,7 @@ COMMON_GLOBAL_CFLAGS += -DQCOM_HARDWARE
 BOARD_USES_QCOM_HARDWARE := true
 TARGET_QCOM_DISPLAY_VARIANT := caf
 #TARGET_QCOM_AUDIO_VARIANT := caf
-TARGET_QCOM_MEDIA_VARIANT := caf-new
+#TARGET_QCOM_MEDIA_VARIANT := caf
 
 # inherit from Sony common
 include device/sony/common/BoardConfigCommon.mk
